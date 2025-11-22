@@ -12,6 +12,7 @@
 ENABLE_SCRIPT_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_enable.sh"
 DISABLE_SCRIPT_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_disable.sh"
 GPS_PY_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_sender.py"
+GPS_UNI_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_uninstall.sh"
 
 RPTCONF="/etc/asterisk/rpt.conf"
 INSTALL_DIR="/root/GPS"
@@ -39,7 +40,7 @@ echo ""
 echo "Downloading scripts..."
 
 # --- Download scripts using curl ---
-for FILE_URL in "$ENABLE_SCRIPT_URL" "$DISABLE_SCRIPT_URL" "$GPS_PY_URL"; do
+for FILE_URL in "$ENABLE_SCRIPT_URL" "$DISABLE_SCRIPT_URL" "$GPS_PY_URL" "$GPS_UNI_URL"; do
     FILE_NAME=$(basename "$FILE_URL")
     curl -fsSL "$FILE_URL" -o "$INSTALL_DIR/$FILE_NAME" || {
         echo "ERROR: Failed to download $FILE_NAME"
@@ -51,6 +52,7 @@ done
 chmod +x "$INSTALL_DIR/gps_enable.sh"
 chmod +x "$INSTALL_DIR/gps_disable.sh"
 chmod +x "$INSTALL_DIR/gps_sender.py"
+chmod +x "$INSTALL_DIR/gps_uninstall.sh"
 
 echo "Scripts installed to $INSTALL_DIR"
 
