@@ -25,7 +25,7 @@ INCLUDE_TRAIL = False       # True / False
 #------------------------------------#
 
 # DTMF control flag file
-FLAG_FILE = "/tmp/GPS.ENABLED"
+FLAG_FILE = "/root/GPS/GPS.ENABLED"
 
 
 def convert_to_decimal(value, direction, is_lon=False):
