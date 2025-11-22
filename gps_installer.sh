@@ -4,8 +4,7 @@
 #
 # Ver 2.0 -
 #
-# Complete GPS Node Installer for DTMF TG Control
-# Installs enable/disable scripts and gps_sender.py with systemd service
+# Complete GPS Node Installer
 #
 
 # --- GitHub Raw URLs ---
