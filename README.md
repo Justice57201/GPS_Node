@@ -24,6 +24,7 @@ Installation & Setup
 
 5. The install will now be finished, time to set up the script.
 
+.
 
 { Setup }
 
@@ -35,7 +36,7 @@ Installation & Setup
 
       CALLSIGN = 'WLMR400-1240'
 
-  * Select your icon from the list of <a href="https://gmrs-link.com/map/icons/map_icons.pdf" target="_blank">Map Icons</a>
+  * Select your icon from the list of <a href="https://gmrs-link.com/map/icons/map_icons.pdf" target="_blank" rel="noopener noreferrer">Map icons</a>
 
   * Enter your Username and Password from the registration e-mail.
 
@@ -55,6 +56,8 @@ You are looking for the USB ACM device. the ttyxxxx: USB ACM device is the path 
 
 5. When done, save the file.
 
+.
+
 { How to use }
 
 Using your radio's DTMF keypad or Supermon
@@ -68,6 +71,7 @@ Open the tracking website listed in your registration e-mail.
 NOTES:   
     
   * Every time you reboot the node, you will need to re-enable the GPS tracking.
+
 
 
 ## Author
