@@ -12,9 +12,9 @@ Installation & Setup
 
 1. SSH into your Node.
 
-2. Open a bash shell terminal
+2. Open a bash shell terminal.
 
-3. Enter
+3. Copy & Paste or Type in the line below.
 
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_installer.sh)"
 
@@ -27,17 +27,17 @@ Installation & Setup
 
 { Setup }
 
-1. Navigate to /root/GPS/gps_sender.py , open the file in the editor
+1. Navigate to /root/GPS/gps_sender.py , open the file in the editor.
 
-2. Find the User Config section
+2. Find the (User Config) section.
 
-  * Add your callsign and node number
+  * Add your callsign and node number.
 
     CALLSIGN = 'WLMR400-1240'
 
-  * Choose your icon from the list of Icons
+  * Select your icon from the list of <a href="https://gmrs-link.com/map/icons/map_icons.pdf" target="_blank">Map icons</a>
 
-  * Enter your Username and Password from the registration e-mail
+  * Enter your Username and Password from the registration e-mail.
 
 3. Plug in the V-Fan GPS receiver, then in the terminal enter
 
@@ -53,17 +53,17 @@ Installation & Setup
 
 You are looking for the USB ACM device. the ttyxxxx: USB ACM device is the path you want. Copy that and place it in the DEVICE = section of the gps_sender.py file.
 
-5. When done save the file.
+5. When done, save the file.
 
 { How to use }
 
-Using your radios DTMF keypad or Supermon
+Using your radio's DTMF keypad or Supermon
 
 Enable  = A50   
 Disable = A51
 
 
-## Authors
+## Author
 
 - [WRQC343](https://www.gmrs-link.com)
 
