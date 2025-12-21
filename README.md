@@ -4,7 +4,7 @@
 
 # GMRS-Link Node Tracking
 
-GPS Tracking for GMRS nodes running (Hamvoip)
+GPS Tracking for GMRS nodes running ( Hamvoip )
 
 Installation & Setup
 
@@ -16,7 +16,7 @@ Installation & Setup
 
 3. Copy & Paste or Type in the line below.
 
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_installer.sh)"
+        bash -c "$(curl -fsSL https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_installer.sh)"
 
   Press ENTER, and the install will begin.
 
@@ -29,19 +29,19 @@ Installation & Setup
 
 1. Navigate to /root/GPS/gps_sender.py , open the file in the editor.
 
-2. Find the (User Config) section.
+2. Find the ( User Config ) section and configure your sender file.
 
   * Add your callsign and node number.
 
-    CALLSIGN = 'WLMR400-1240'
+      CALLSIGN = 'WLMR400-1240'
 
-  * Select your icon from the list of <a href="https://gmrs-link.com/map/icons/map_icons.pdf" target="_blank">Map icons</a>
+  * Select your icon from the list of <a href="https://gmrs-link.com/map/icons/map_icons.pdf" target="_blank">Map Icons</a>
 
   * Enter your Username and Password from the registration e-mail.
 
 3. Plug in the V-Fan GPS receiver, then in the terminal enter
 
-   dmesg | grep tty
+       dmesg | grep tty
 
 4. It should return a message like this:
 
@@ -59,8 +59,15 @@ You are looking for the USB ACM device. the ttyxxxx: USB ACM device is the path 
 
 Using your radio's DTMF keypad or Supermon
 
-Enable  = A50   
-Disable = A51
+Enable  = *A50   
+Disable = *A51
+
+Open the tracking website listed in your registration e-mail.
+
+
+NOTES:   
+    
+  * Every time you reboot the node, you will need to re-enable the GPS tracking.
 
 
 ## Author
