@@ -34,7 +34,7 @@ Installation & Setup
 
   * Add your callsign and node number.
 
-      CALLSIGN = 'WLMR400-1240'
+       CALLSIGN = 'WLMR400-1240'
 
   * Select your icon from the list of <a href="https://gmrs-link.com/map/icons/map_icons.pdf" target="_blank" rel="noopener noreferrer">Map Icons</a>
 
