@@ -63,8 +63,8 @@ Copy that and place it in the DEVICE = section of the gps_sender.py file.
 
 Using your radio's DTMF keypad or Supermon
 
-Enable  = *A50   
-Disable = *A51
+  * Enable  = *A50   
+  * Disable = *A51
 
 Open the tracking website listed in your registration e-mail and test.
 
