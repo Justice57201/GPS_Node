@@ -36,7 +36,7 @@ Installation & Setup
 
       CALLSIGN = 'WLMR400-1240'
 
-  * Select your icon from the list of <a href="https://gmrs-link.com/map/icons/map_icons.pdf" onclick="window.open(this.href); return false;">Map icons</a>
+  * Select your icon from the list of <a href="https://gmrs-link.com/map/icons/map_icons.pdf" target="_blank" rel="noopener noreferrer">Map Icons</a>
 
   * Enter your Username and Password from the registration e-mail.
 
@@ -52,7 +52,8 @@ Installation & Setup
 [  285.652564] cdc_acm 1-1.1.3:1.0: ttyACM0: USB ACM device
 [ 2706.877036] cdc_acm 1-1.1.3:1.0: ttyACM1: USB ACM device
 
-You are looking for the USB ACM device. the ttyxxxx: USB ACM device is the path you want. Copy that and place it in the DEVICE = section of the gps_sender.py file.
+You are looking for the USB ACM device. the ttyxxxx: USB ACM device is the path you want.     
+Copy that and place it in the DEVICE = section of the gps_sender.py file.
 
 5. When done, save the file.
 
@@ -65,7 +66,7 @@ Using your radio's DTMF keypad or Supermon
 Enable  = *A50   
 Disable = *A51
 
-Open the tracking website listed in your registration e-mail.
+Open the tracking website listed in your registration e-mail and test.
 
 
 NOTES:   
