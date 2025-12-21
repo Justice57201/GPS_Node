@@ -32,13 +32,13 @@ Installation & Setup
 
 2. Find the ( User Config ) section and configure your sender file.
 
-  * Add your callsign and node number.
+    * Add your callsign and node number.
 
-       CALLSIGN = 'WLMR400-1240'
+        CALLSIGN = 'WLMR400-1240'
 
-  * Select your icon from the list of <a href="https://gmrs-link.com/map/icons/map_icons.pdf" target="_blank" rel="noopener noreferrer">Map Icons</a>
+    * Select your icon from the list of <a href="https://gmrs-link.com/map/icons/map_icons.pdf" target="_blank" rel="noopener noreferrer">Map Icons</a>
 
-  * Enter your Username and Password from the registration e-mail.
+    * Enter your Username and Password from the registration e-mail.
 
 3. Plug in the V-Fan GPS receiver, then in the terminal enter
 
