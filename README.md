@@ -1,3 +1,11 @@
+
+![Logo](https://gmrs-link.com/map/Node-tracking.png)
+
+
+# GMRS-Link Node Tracking
+
+GPS Tracking for GMRS nodes running (Hamvoip)
+
 Installation & Setup
 
 { Automated Installation }
@@ -29,23 +37,33 @@ Installation & Setup
 
   * Choose your icon from the list of Icons
 
-  * Enter your Username and Password from registration
+  * Enter your Username and Password from the registration e-mail
 
 3. Plug in the V-Fan GPS receiver, then in the terminal enter
 
    dmesg | grep tty
 
-4. You will see something like what is below. You are looking for the underlined parts, which are the device ID. Please take note of it and compare it to the device listed in the script.
-   If it is anything other than the ttyAMA0, change the script to match.
+4. It should return a message like this:
 
-======================================================================================================================================================================================================
-|                                                                                                                                                                                                    |
-| [    0.000000] Kernel command line: coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1 bcm2708_fb.fbwidth=640 bcm2708_fb.fbheight=480 bcm2708_fb.fbswap=1 | 
-| vc_mem.mem_base=0x3ec00000 vc_mem.mem_size=0x40000000 root=/dev/mmcblk0p2 rw rootwait console=tty1 selinux=0 plymouth.enable=0 smsc95xx.turbo_mode=N dwc_otg.lpm_enable=0 elevator=noop audit=0    |
-| [    0.000859] printk: console [tty1] enabled                                                                                                                                                      |
-| [    5.955167] 3f201000.serial: ttyAMA0 at MMIO 0x3f201000 (irq = 81, ase_baud = 0) is a PL011 rev2                                                                                                |
-| [    8.340419] cdc_acm 1-1.2:1.0: ttyACM0: USB ACM device                                                                                                                                          |
-|                                                                                                                                                                                                    |
-======================================================================================================================================================================================================
+[    0.000000] Kernel command line: coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1 bcm2708_fb.fbwidth=640 				bcm2708_fb.fbheight=480 bcm2708_fb.fbswap=1 vc_mem.mem_base=0x3ec00000 vc_mem.mem_size=0x40000000  root=/dev/mmcblk0p2 rw rootwait console=tty1 selinux=0 			plymouth.enable=0 smsc95xx.turbo_mode=N dwc_otg.lpm_enable=0 elevator=noop audit=0
+[    0.000860] printk: console [tty1] enabled
+[    5.949104] 3f201000.serial: ttyAMA0 at MMIO 0x3f201000 (irq = 81, base_baud = 0) is a PL011 rev2
+[  285.652564] cdc_acm 1-1.1.3:1.0: ttyACM0: USB ACM device
+[ 2706.877036] cdc_acm 1-1.1.3:1.0: ttyACM1: USB ACM device
 
-5.
+You are looking for the USB ACM device. the ttyxxxx: USB ACM device is the path you want. Copy that and place it in the DEVICE = section of the gps_sender.py file.
+
+5. When done save the file.
+
+{ How to use }
+
+Using your radios DTMF keypad or Supermon
+
+Enable  = A50   
+Disable = A51
+
+
+## Authors
+
+- [WRQC343](https://www.gmrs-link.com)
+
