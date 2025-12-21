@@ -72,7 +72,7 @@ Open the tracking website listed in your registration e-mail and test.
 NOTES:   
     
   * Every time you reboot the node, you will need to re-enable the GPS tracking.
-
+  * Remember this is a Beta and subject to change.
 
 
 ## Author
