@@ -5,7 +5,7 @@
 # Ver 1.0 - 
 #
 
-touch /root/GPS/GPS.ENABLED
+touch /tmp/GPS.ENABLED
 
 echo "GPS ENABLED" | logger
 
