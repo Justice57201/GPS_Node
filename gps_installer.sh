@@ -102,7 +102,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python /root/GPS/gps_sender.py
+ExecStart=/root/GPS/gps_sender.py
 Restart=always
 User=root
 WorkingDirectory=$INSTALL_DIR
