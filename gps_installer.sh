@@ -100,7 +100,7 @@ echo "gps_sender.py service created and started."
 
 echo ""
 echo "Reloading Asterisk..."
-asterisk -rx "reload" >/dev/null 2>&1
+asterisk -rx "rpt reload" >/dev/null 2>&1
 
 echo "Done."
 
