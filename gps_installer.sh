@@ -12,9 +12,12 @@ ENABLE_SCRIPT_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/
 DISABLE_SCRIPT_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_disable.sh"
 GPS_PY_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_sender.py"
 GPS_UNI_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_uninstall.sh"
+ENABLE_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/enable.gsm"
+DISABLE_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/disable.gsm"
 
 RPTCONF="/etc/asterisk/rpt.conf"
 INSTALL_DIR="/root/GPS"
+SOUND_DIR="/root/GPS/Sounds"
 
 echo ""
 echo "--------------------"
@@ -24,6 +27,7 @@ echo ""
 
 # --- Create installation directory ---
 mkdir -p "$INSTALL_DIR"
+mkdir -p "$SOUND_DIR"
 
 # --- Prompt for node number ---
 read -p "Enter your node number (numbers only): " NODENUM
