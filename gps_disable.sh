@@ -7,5 +7,6 @@
 
 rm -f /tmp/GPS.ENABLED
 
-echo "GPS DISABLED" | logger
+asterisk -rx "rpt localplay $NODE1 /root/GPS/Sound/disabled"
 
+echo "GPS DISABLED" | logger
