@@ -5,7 +5,7 @@
 # Ver 1.0 - 
 #
 
-rm -f /root/GPS/GPS.ENABLED
+rm -f /tmp/GPS.ENABLED
 
 echo "GPS DISABLED" | logger
 
