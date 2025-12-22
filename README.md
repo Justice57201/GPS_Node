@@ -55,7 +55,7 @@ Installation & Setup
 You are looking for the USB ACM device. the ttyxxxx: USB ACM device is the path you want.     
 Copy that and place it in the DEVICE = section of the gps_sender.py file.
 
-5. When done, save the file.
+5. When done, save the file & reboot the node.
 
 .
 
