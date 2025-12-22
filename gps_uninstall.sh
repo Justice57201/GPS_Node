@@ -2,67 +2,80 @@
 #
 # By -- WRQC343 -- www.gmrs-link.com
 #
-# Ver 1.1 - 11/25
-#
 # GPS Node Uninstaller
 #
 
-INSTALL_DIR="/root/GPS"
 RPTCONF="/etc/asterisk/rpt.conf"
+INSTALL_DIR="/root/GPS"
+SOUND_DIR="/root/GPS/Sounds"
+SERVICE_FILE="/etc/systemd/system/gps_sender.service"
 
 echo ""
-echo "--------------------"
-echo "  GPS Uninstaller"
-echo "--------------------"
+echo "------------------------"
+echo "   GPS Uninstaller"
+echo "------------------------"
 echo ""
 
-read -p "Enter your node number to remove (numbers only): " NODENUM
+# --- Root check ---
+[[ $EUID -ne 0 ]] && { echo "Run as root"; exit 1; }
+
+# --- Prompt for node number ---
+read -p "Enter your node number to REMOVE (numbers only): " NODENUM
 
 if ! [[ "$NODENUM" =~ ^[0-9]+$ ]]; then
     echo "Error: Node number must be numeric."
     exit 1
 fi
 
-FUNCTIONS="[functions$NODENUM]"
+echo ""
+echo "Stopping GPS service..."
 
-# --- Stop and disable systemd service ---
-if systemctl list-units --all | grep -q gps_sender.service; then
-    echo "Stopping gps_sender.service..."
+# --- Stop and remove systemd service ---
+if systemctl is-active --quiet gps_sender.service; then
     systemctl stop gps_sender.service
-    systemctl disable gps_sender.service
-    rm -f /etc/systemd/system/gps_sender.service
-    systemctl daemon-reload
-    echo "Service removed."
-else
-    echo "No gps_sender.service found."
 fi
 
-# --- Remove scripts + full GPS folder ---
-if [ -d "$INSTALL_DIR" ]; then
-    echo "Removing entire $INSTALL_DIR directory..."
-    rm -rf "$INSTALL_DIR"
-    echo "Directory removed."
-fi
+systemctl disable gps_sender.service >/dev/null 2>&1
+rm -f "$SERVICE_FILE"
+systemctl daemon-reload
 
-# --- Remove DTMF commands ---
-if [ -f "$RPTCONF" ]; then
-    echo "Cleaning rpt.conf..."
-    sed -i "/\[functions$NODENUM\]/,/^\[/ s/.*gps_enable.*//" "$RPTCONF"
-    sed -i "/\[functions$NODENUM\]/,/^\[/ s/.*gps_disable.*//" "$RPTCONF"
-    sed -i "/\[functions$NODENUM\]/,/^\[/ s/^A50 *=.*//" "$RPTCONF"
-    sed -i "/\[functions$NODENUM\]/,/^\[/ s/^A51 *=.*//" "$RPTCONF"
-fi
+echo "GPS service removed."
 
+echo ""
+echo "Cleaning rpt.conf..."
+
+# --- Remove DTMF entries from rpt.conf ---
+sed -i "/^\[functions$NODENUM\]/,/^\[/ {
+    /^A50 *=/d
+    /^A51 *=/d
+}" "$RPTCONF"
+
+echo "rpt.conf cleaned for functions$NODENUM"
+
+echo ""
+echo "Removing GPS files..."
+
+# --- Remove installed files ---
+rm -f "$INSTALL_DIR/gps_enable.sh"
+rm -f "$INSTALL_DIR/gps_disable.sh"
+rm -f "$INSTALL_DIR/gps_sender.py"
+rm -f "$INSTALL_DIR/gps_uninstall.sh"
+rm -f "$SOUND_DIR/enable.gsm"
+rm -f "$SOUND_DIR/disable.gsm"
+
+# --- Remove directories if empty ---
+rmdir "$SOUND_DIR" 2>/dev/null
+rmdir "$INSTALL_DIR" 2>/dev/null
+
+echo "Files removed."
+
+echo ""
 echo "Reloading Asterisk..."
-asterisk -rx "reload" >/dev/null 2>&1
+asterisk -rx "rpt reload" >/dev/null 2>&1
 
-echo "GPS Node $NODENUM uninstalled successfully."
-
-# --- Self-delete ---
-SCRIPT_PATH="$0"
-(
-  sleep 1
-  rm -- "$SCRIPT_PATH"
-) &
+echo ""
+echo "GPS Node uninstalled successfully."
+echo "Done."
 
 exit 0
+
