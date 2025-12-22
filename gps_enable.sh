@@ -7,5 +7,6 @@
 
 touch /tmp/GPS.ENABLED
 
-echo "GPS ENABLED" | logger
+asterisk -rx "rpt localplay $NODE1 /root/GPS/Sound/enabled"
 
+echo "GPS ENABLED" | logger
