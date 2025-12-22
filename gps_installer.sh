@@ -12,8 +12,8 @@ ENABLE_SCRIPT_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/
 DISABLE_SCRIPT_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_disable.sh"
 GPS_PY_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_sender.py"
 GPS_UNI_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_uninstall.sh"
-ENABLE_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/enable.gsm"
-DISABLE_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/disable.gsm"
+ENABLE_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/enabled.gsm"
+DISABLE_URL="https://raw.githubusercontent.com/Justice57201/GPS_Node/main/disabled.gsm"
 
 RPTCONF="/etc/asterisk/rpt.conf"
 INSTALL_DIR="/root/GPS"
