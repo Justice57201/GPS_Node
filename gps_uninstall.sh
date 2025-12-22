@@ -16,10 +16,8 @@ echo "   GPS Uninstaller"
 echo "------------------------"
 echo ""
 
-# --- Root check ---
 [[ $EUID -ne 0 ]] && { echo "Run as root"; exit 1; }
 
-# --- Prompt for node number ---
 read -p "Enter your node number to REMOVE (numbers only): " NODENUM
 
 if ! [[ "$NODENUM" =~ ^[0-9]+$ ]]; then
@@ -30,7 +28,6 @@ fi
 echo ""
 echo "Stopping GPS service..."
 
-# --- Stop and remove systemd service ---
 if systemctl is-active --quiet gps_sender.service; then
     systemctl stop gps_sender.service
 fi
@@ -44,7 +41,6 @@ echo "GPS service removed."
 echo ""
 echo "Cleaning rpt.conf..."
 
-# --- Remove DTMF entries from rpt.conf ---
 sed -i "/^\[functions$NODENUM\]/,/^\[/ {
     /^A50 *=/d
     /^A51 *=/d
@@ -55,16 +51,13 @@ echo "rpt.conf cleaned for functions$NODENUM"
 echo ""
 echo "Removing GPS files..."
 
-# --- Remove installed files ---
 rm -f "$INSTALL_DIR/gps_enable.sh"
 rm -f "$INSTALL_DIR/gps_disable.sh"
 rm -f "$INSTALL_DIR/gps_sender.py"
 rm -f "$INSTALL_DIR/gps_uninstall.sh"
-rm -f "$SOUND_DIR/enable.gsm"
-rm -f "$SOUND_DIR/disable.gsm"
 
-# --- Remove directories if empty ---
-rmdir "$SOUND_DIR" 2>/dev/null
+rm -rf "$SOUND_DIR"
+
 rmdir "$INSTALL_DIR" 2>/dev/null
 
 echo "Files removed."
