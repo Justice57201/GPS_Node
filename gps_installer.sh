@@ -71,6 +71,7 @@ chmod +x "$INSTALL_DIR/gps_enable.sh"
 chmod +x "$INSTALL_DIR/gps_disable.sh"
 chmod +x "$INSTALL_DIR/gps_sender.py"
 chmod +x "$INSTALL_DIR/gps_uninstall.sh"
+chmod 644 "$SOUND_DIR/"*.gsm
 
 echo "Scripts installed to $INSTALL_DIR"
 
@@ -101,7 +102,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python2 $INSTALL_DIR/gps_sender.py
+ExecStart=/usr/bin/python /root/GPS/gps_sender.py
 Restart=always
 User=root
 WorkingDirectory=$INSTALL_DIR
