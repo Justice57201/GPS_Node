@@ -6,6 +6,9 @@
 
 GPS Tracking for GMRS nodes running ( Hamvoip )
 
+Required equipment:
+        * VFAN USB GPS Receiver <a href="[https://gmrs-link.com/map/icons/map_icons.pdf](https://www.amazon.com/dp/B073P3Y48Q/?coliid=I2EOEUSAIB3X45&colid=3FZ081E0DMKUH&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it)" target="_blank" rel="noopener noreferrer">Amazon Link</a>
+
 Installation & Setup
 
 { Automated Installation }
