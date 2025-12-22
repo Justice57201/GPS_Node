@@ -42,10 +42,25 @@ FUNCTIONS="[functions$NODENUM]"
 echo ""
 echo "Downloading scripts..."
 
-# --- Download scripts using curl ---
-for FILE_URL in "$ENABLE_SCRIPT_URL" "$DISABLE_SCRIPT_URL" "$GPS_PY_URL" "$GPS_UNI_URL"; do
+# --- Download scripts and sound files using curl ---
+for FILE_URL in \
+    "$ENABLE_SCRIPT_URL" \
+    "$DISABLE_SCRIPT_URL" \
+    "$GPS_PY_URL" \
+    "$GPS_UNI_URL" \
+    "$ENABLE_URL" \
+    "$DISABLE_URL"
+do
     FILE_NAME=$(basename "$FILE_URL")
-    curl -fsSL "$FILE_URL" -o "$INSTALL_DIR/$FILE_NAME" || {
+
+    # Send GSM files to Sounds directory, everything else to install dir
+    if [[ "$FILE_NAME" == *.gsm ]]; then
+        DEST="$SOUND_DIR/$FILE_NAME"
+    else
+        DEST="$INSTALL_DIR/$FILE_NAME"
+    fi
+
+    curl -fsSL "$FILE_URL" -o "$DEST" || {
         echo "ERROR: Failed to download $FILE_NAME"
         exit 1
     }
