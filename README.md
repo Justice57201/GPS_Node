@@ -28,10 +28,10 @@ Installation & Setup
 
 5. The install will now be finished, time to set up the script.
 &nbsp;
-&nbsp;
+
 &nbsp;
 
-{ Setup }
+## { Setup }
 
 1. Navigate to /root/GPS/gps_sender.py , open the file in the editor.
 
@@ -51,20 +51,26 @@ Installation & Setup
 
 4. It should return a message like this:
 
-[    0.000000] Kernel command line: coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1 bcm2708_fb.fbwidth=640 				bcm2708_fb.fbheight=480 bcm2708_fb.fbswap=1 vc_mem.mem_base=0x3ec00000 vc_mem.mem_size=0x40000000  root=/dev/mmcblk0p2 rw rootwait console=tty1 selinux=0 			plymouth.enable=0 smsc95xx.turbo_mode=N dwc_otg.lpm_enable=0 elevator=noop audit=0
-[    0.000860] printk: console [tty1] enabled
-[    5.949104] 3f201000.serial: ttyAMA0 at MMIO 0x3f201000 (irq = 81, base_baud = 0) is a PL011 rev2
-[  285.652564] cdc_acm 1-1.1.3:1.0: ttyACM0: USB ACM device
-[ 2706.877036] cdc_acm 1-1.1.3:1.0: ttyACM1: USB ACM device
+<pre>
+[    0.000859] printk: console [tty1] enabled
+[    5.950629] 3f201000.serial: ttyAMA0 at MMIO 0x3f201000 (irq = 81, base_baud = 0) is a PL011 rev2
+[    8.403356] cdc_acm 1-1.2:1.0: ttyACM0: USB ACM device    
+</pre>
 
-You are looking for the USB ACM device. the ttyxxxx: USB ACM device is the path you want.     
-Copy that and place it in the DEVICE = section of the gps_sender.py file.
+Look for the parts that read tty****.  Most likely it will be ttyACM0 or ttyACM1    
+If it's 1, then change it where it says DEVICE = '/dev/ttyACM0'.     
+The default is ttyACM0
 
-5. When done, save the file & reboot the node.
+5. Save & Close the file 
 
-.
+6. In the terminal, enter
 
-{ How to use }
+       systemctl restart gps_sender.service 
+&nbsp;
+
+&nbsp;
+
+## { How to use }
 
 Using your radio's DTMF keypad or Supermon
 
@@ -77,6 +83,8 @@ Open the tracking website listed in your registration e-mail and test.
 NOTES:   
     
   * Every time you reboot the node, you will need to re-enable the GPS tracking.
+  * Anytime changes are made to the gps_sender.py file, you will need to do the ( systemctl restart gps_sender.service )
+    to update the file.
   * Remember this is a Beta and subject to change.
 
 
