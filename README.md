@@ -19,10 +19,10 @@ Required Equipment:
 2. Open a bash shell terminal.
 
 3. Copy & Paste the line below.
-
-        bash -c "$(curl -fsSL https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_installer.sh)"
-
-     Press ENTER, and the install will begin.
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_installer.sh)"
+```
+   Press ENTER, and the install will begin.
 
 4. You will now be asked to enter your node number.
 
@@ -56,17 +56,17 @@ Required Equipment:
 &nbsp;
 
 3. Plug in the V-Fan GPS receiver, then in the terminal enter
-
-       dmesg | grep tty              
-
+```bash
+dmesg | grep tty              
+```
 
 4. It should return a message like this.
 
-  
-       [0.000859] printk: console [tty1] enabled
-       [5.950629] 3f201000.serial: ttyAMA0 at MMIO 0x3f201000 (irq = 81, base_baud = 0) is a PL011 rev2
-       [8.403356] cdc_acm 1-1.2:1.0: ttyACM0: USB ACM device    
-  
+  ```bash
+[0.000859] printk: console [tty1] enabled
+[5.950629] 3f201000.serial: ttyAMA0 at MMIO 0x3f201000 (irq = 81, base_baud = 0) is a PL011 rev2
+[8.403356] cdc_acm 1-1.2:1.0: ttyACM0: USB ACM device    
+```  
 
    Look for the parts that read tty****.  Most likely it will be ttyACM0 or ttyACM1    
    If it's 1, then change it where it says DEVICE = '/dev/ttyACM0'.     
@@ -75,8 +75,9 @@ Required Equipment:
 5. Save & Close the file 
 
 6. In the terminal, enter
-
-       systemctl restart gps_sender.service 
+```bash
+systemctl restart gps_sender.service 
+```
 &nbsp;
 
 &nbsp;
@@ -99,8 +100,20 @@ Open the tracking website listed in your registration e-mail and test.
   * Anytime changes are made to the gps_sender.py file, you will need to do the ( systemctl restart gps_sender.service )
     to update the file.
   * Remember this is a Beta and subject to change.
+&nbsp;
 
+&nbsp;
+## Uninstall
 
+1. Open Terminal & enter
+
+```bash
+/root/GPS/gps_uninstall.sh
+```
+2. Enter your node number.
+&nbsp;
+
+&nbsp;
 ## Author
 
 - [WRQC343](https://www.gmrs-link.com)
