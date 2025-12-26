@@ -10,7 +10,7 @@ Required Equipment:
         
    * VFAN USB GPS Receiver <a href="https://www.amazon.com/dp/B073P3Y48Q/?coliid=I2EOEUSAIB3X45&colid=3FZ081E0DMKUH&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it)" target="_blank" rel="noopener noreferrer">Amazon Link</a>
 
-Installation & Setup
+## Installation & Setup
 
 { Automated Installation }
 
@@ -18,11 +18,11 @@ Installation & Setup
 
 2. Open a bash shell terminal.
 
-3. Copy & Paste or Type in the line below.
+3. Copy & Paste the line below.
 
         bash -c "$(curl -fsSL https://raw.githubusercontent.com/Justice57201/GPS_Node/main/gps_installer.sh)"
 
-  Press ENTER, and the install will begin.
+     Press ENTER, and the install will begin.
 
 4. You will now be asked to enter your node number.
 
@@ -31,7 +31,7 @@ Installation & Setup
 
 &nbsp;
 
-## { Setup }
+## Setup
 
 1. Navigate to /root/GPS/gps_sender.py , open the file in the editor.
 
@@ -43,23 +43,34 @@ Installation & Setup
 
     * Select your icon from the list of <a href="https://gmrs-link.com/map/icons/map_icons.pdf" target="_blank" rel="noopener noreferrer">Map Icons</a>
 
+    * Set the Send Interval between 60 - 600 Seconds
+
+    * Set the Speed. If you are a base, then select False. If mobile, then select True
+    
+    * Set Trail. If you don't want to leave a map trail, set to False
+
+    * Debug is for testing the connection. 
+    
     * Enter your Username and Password from the registration e-mail.
+
+&nbsp;
 
 3. Plug in the V-Fan GPS receiver, then in the terminal enter
 
-       dmesg | grep tty
+       dmesg | grep tty              
 
-4. It should return a message like this:
 
-<pre>
-[    0.000859] printk: console [tty1] enabled
-[    5.950629] 3f201000.serial: ttyAMA0 at MMIO 0x3f201000 (irq = 81, base_baud = 0) is a PL011 rev2
-[    8.403356] cdc_acm 1-1.2:1.0: ttyACM0: USB ACM device    
-</pre>
+4. It should return a message like this.
 
-Look for the parts that read tty****.  Most likely it will be ttyACM0 or ttyACM1    
-If it's 1, then change it where it says DEVICE = '/dev/ttyACM0'.     
-The default is ttyACM0
+  
+       [0.000859] printk: console [tty1] enabled
+       [5.950629] 3f201000.serial: ttyAMA0 at MMIO 0x3f201000 (irq = 81, base_baud = 0) is a PL011 rev2
+       [8.403356] cdc_acm 1-1.2:1.0: ttyACM0: USB ACM device    
+  
+
+   Look for the parts that read tty****.  Most likely it will be ttyACM0 or ttyACM1    
+   If it's 1, then change it where it says DEVICE = '/dev/ttyACM0'.     
+   The default is ttyACM0
 
 5. Save & Close the file 
 
@@ -70,7 +81,7 @@ The default is ttyACM0
 
 &nbsp;
 
-## { How to use }
+## How to use
 
 Using your radio's DTMF keypad or Supermon
 
@@ -78,9 +89,11 @@ Using your radio's DTMF keypad or Supermon
   * Disable = *A51
 
 Open the tracking website listed in your registration e-mail and test.
+&nbsp;
 
+&nbsp;
 
-NOTES:   
+### NOTES:   
     
   * Every time you reboot the node, you will need to re-enable the GPS tracking.
   * Anytime changes are made to the gps_sender.py file, you will need to do the ( systemctl restart gps_sender.service )
