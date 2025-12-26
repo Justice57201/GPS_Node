@@ -27,8 +27,9 @@ Installation & Setup
 4. You will now be asked to enter your node number.
 
 5. The install will now be finished, time to set up the script.
-
-.
+&nbsp;
+&nbsp;
+&nbsp;
 
 { Setup }
 
