@@ -202,8 +202,3 @@ Enter your node number when asked.
 ## Author
 
 * [WRQC343](https://www.gmrs-link.com)
-
-## Author
-
-- [WRQC343](https://www.gmrs-link.com)
-
