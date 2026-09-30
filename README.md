@@ -1,12 +1,12 @@
 ![Logo](https://gmrs-link.com/map/Node-tracking.png)
 
-![Release Version](https://img.shields.io/badge/Version-v9.0.0-blue?color=blue)
+![Release Version](https://img.shields.io/badge/Version-v7.0.0-blue?color=blue)
 ![Release Version](https://img.shields.io/badge/BETA_Testing-black?color=orange)
 ![OS Version](https://img.shields.io/badge/OS-Linux_*_Hamvoip-red?color=red)
 
 # GMRS-Link Node Tracking
 
-GPS tracking for GMRS nodes. Your node reads its position from a USB GPS receiver and sends it to the GMRS-Link node tracking map.
+GPS tracking for GMRS nodes. Your node reads its position from a USB GPS receiver and sends it to the GMRS-Link live map.
 
 ## Before you start
 
@@ -70,7 +70,9 @@ Near the top is the **USER CONFIG** section. It looks like this. The values belo
 #               USER CONFIG                #
 #------------------------------------------#
 
-CALLSIGN = 'WRXX123-1234'     # Callsign-Node#
+CALLSIGN = 'WRXX123'          # Your callsign only -- no dash or number
+SSID = 1                      # 1 = callsign alone (WRXX123)
+                              # 2-10 = extra units (WRXX123-2 ... WRXX123-10)
 ICON = 'marker_blue'          # See pin list
 DEBUG = False                 # Debug output
 SEND_INTERVAL = 60            # Seconds
@@ -85,7 +87,8 @@ INCLUDE_HEADING = True        # Direction arrow on the map while moving
 HEADING_MIN_SPEED = 3         # mph -- no arrow below this (GPS heading is junk when parked)
 INCLUDE_GPS_INFO = True       # Altitude + satellite count in the popup
 NODE_TYPE = 'mobile'          # 'mobile', 'base', 'repeater', 'portable' or '' for none
-CHANNEL = 'GMRS 20'           # e.g. 'GMRS 20' or '462.675' -- '' for none
+NETWORK = ''                  # Network name, e.g. 'T.G.L.N', 'G.F.N', 'N.E.G'
+                              # Max 20 characters -- '' for none
 NODE_LINK = ''                # Status page URL, e.g. 'https://...' -- '' for none
 
 # ---- Credentials From Registration ---- #
@@ -97,14 +100,15 @@ AUTH_PASS = "PASSWORD"        # Password
 ```
 
 > [!IMPORTANT]
-> * Keep the quote marks around text values like `'WRXX123-1234'`.
+> * Keep the quote marks around text values like `'WRXX123'`.
 > * `True` and `False` start with a capital letter and have **no** quotes.
 
 ### Basic settings
 
 | Setting | What to put there |
 |---|---|
-| `CALLSIGN` | Your call sign **and** node number, joined with a dash, e.g. `'WRXX123-1234'`. This is the name shown on the map. |
+| `CALLSIGN` | Your call sign **only**, e.g. `'WRXX123'`. No dash and no number. |
+| `SSID` | Which unit this is. `1` shows your call sign alone (`WRXX123`). `2` to `10` are for extra units and show as `WRXX123-2` up to `WRXX123-10`. |
 | `ICON` | The pin shown on the map. Pick one from the [Map Icons](https://gmrs-link.com/map/icons/map_icons.pdf) list, e.g. `'marker_blue'` or `'pickup'`. |
 | `DEBUG` | `True` prints extra output for testing the connection. Use `False` for normal use. |
 | `SEND_INTERVAL` | How often your position is sent, in seconds. Use **60 to 600**. |
@@ -122,20 +126,21 @@ These add more detail to your pin on the map. Leave them as they are if you're n
 | `HEADING_MIN_SPEED` | The arrow only shows above this speed, in mph. GPS direction is unreliable when parked, so `3` is a good start. |
 | `INCLUDE_GPS_INFO` | `True` adds altitude and satellite count to the popup when someone clicks your pin. |
 | `NODE_TYPE` | `'mobile'`, `'base'`, `'repeater'` or `'portable'`. Use `''` for none. |
-| `CHANNEL` | The channel or frequency you monitor, e.g. `'GMRS 20'` or `'462.675'`. Use `''` for none. |
+| `NETWORK` | The network your node is on, e.g. `'T.G.L.N'`, `'G.F.N'` or `'N.E.G'`. Up to 20 characters. Use `''` for none. |
 | `NODE_LINK` | A link to your node's status page, starting with `https://`. Use `''` for none. |
 
 ### Login
 
 | Setting | What to put there |
 |---|---|
-| `AUTH_USER` | The **username** from your registration e-mail. This is your call sign only, **without** the node number. |
+| `AUTH_USER` | The **username** from your registration e-mail. |
 | `AUTH_PASS` | The **password** from your registration e-mail, typed exactly as shown. |
 
 > [!TIP]
-> `CALLSIGN` and `AUTH_USER` are different:
-> * `CALLSIGN = 'WRXX123-1234'` has the node number.
-> * `AUTH_USER = "WRXX123"` does not.
+> **More than one unit?** Use the same `CALLSIGN`, `AUTH_USER` and `AUTH_PASS` on each one, and give each unit its own `SSID`.
+> * Base station: `SSID = 1` shows as `WRXX123`
+> * Truck: `SSID = 2` shows as `WRXX123-2`
+> * Portable: `SSID = 3` shows as `WRXX123-3`
 
 ### GPS device
 
@@ -186,6 +191,8 @@ Then open the tracking map listed in your registration e-mail and check that you
 | No `ttyACM` device in Step 2 | Unplug the GPS, wait a few seconds, and plug it back in. Try another USB port. |
 | No position or no fix | The GPS needs a view of the sky. Move it near a window or outside. The first fix can take several minutes. |
 | Default pin instead of your icon | Check the `ICON` spelling against the Map Icons list. |
+| Two units keep replacing each other on the map | Each unit needs a different `SSID`. |
+| Wrong name on the map | `CALLSIGN` is your call sign only. Set the `-2`, `-3` ending with `SSID`, not in `CALLSIGN`. |
 
 ---
 
@@ -202,3 +209,4 @@ Enter your node number when asked.
 ## Author
 
 * [WRQC343](https://www.gmrs-link.com)
+
