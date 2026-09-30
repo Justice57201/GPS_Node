@@ -54,6 +54,25 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Justice57201/GPS_Node/ma
     * Debug is for testing the connection. 
     
     * Enter your Username and Password from the registration e-mail.
+    
+    * **CALLSIGN vs AUTH_USER:** `CALLSIGN` is your call sign *and* node number (`WRQC343-240`).
+      `AUTH_USER` is your call sign only, exactly as it appears in your registration e-mail.
+
+    * Text values keep their quote marks. `True` / `False` start with a capital letter and have no quotes.
+
+   **Map extras (optional)**
+
+    * `INCLUDE_HEADING` – shows a direction arrow on your pin while moving.
+    * `HEADING_MIN_SPEED` – the arrow only appears above this speed (mph). GPS heading is unreliable when parked; 3 is a good start.
+    * `INCLUDE_GPS_INFO` – adds altitude and satellite count to your map popup.
+    * `NODE_TYPE` – `'mobile'`, `'base'`, `'repeater'`, `'portable'`, or `''` for none.
+    * `CHANNEL` – the channel or frequency you monitor, e.g. `'GMRS 20'` or `'462.675'`. `''` for none.
+    * `NODE_LINK` – a link to your node's status page (`https://...`). `''` for none.
+
+   **Always on**
+
+    * `OVERRIDE_ALWAYS_RUN = True` keeps tracking running without using *A50, including after a reboot.
+      Leave it `False` if you want to turn tracking on and off from your radio.
 
 &nbsp;
 
