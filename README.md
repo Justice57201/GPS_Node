@@ -6,7 +6,7 @@
 
 # GMRS-Link Node Tracking
 
-GPS tracking for GMRS nodes. Your node reads its position from a USB GPS receiver and sends it to the GMRS-Link live map.
+GPS tracking for GMRS nodes. Your node reads its position from a USB GPS receiver and sends it to the GMRS-Link node tracking map.
 
 ## Before you start
 
