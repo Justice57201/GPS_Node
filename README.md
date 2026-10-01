@@ -165,7 +165,7 @@ When you're done, save and close the file. In nano, press **Ctrl+O**, then **ENT
 
 ## Step 4: Restart the service
 
-```bash
+```
 systemctl restart gps_sender.service
 ```
 
@@ -245,6 +245,9 @@ Press **Ctrl+C** to stop watching. For more detail, set `DEBUG = True` in `gps_s
 
 ```bash
 /root/GPS/gps_uninstall.sh      # HamVoIP
+```
+
+```bash
 /opt/GPS/gps_uninstall.sh       # ASL3
 ```
 
