@@ -1,6 +1,6 @@
 ![Logo](https://gmrs-link.com/map/Node-tracking.png)
 
-![Release Version](https://img.shields.io/badge/Version-v12.2.0-blue?color=blue)
+![Release Version](https://img.shields.io/badge/Version-v8.0.0-blue?color=blue)
 ![Release Version](https://img.shields.io/badge/BETA_Testing-black?color=orange)
 ![OS Version](https://img.shields.io/badge/OS-Hamvoip_*_ASL3-red?color=red)
 
