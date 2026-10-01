@@ -3,7 +3,7 @@
 #
 # By -- WRQC343 -- www.gmrs-link.com
 #
-# Ver 12.2 - 10/26
+# Ver 8.0.0 - 10/26
 #
 # GPS Node Tracking - Sender
 
@@ -11,7 +11,7 @@
 from __future__ import print_function
 import serial, socket, time, json, os, re
 
-VERSION = "12.2"
+VERSION = "8.0.0"
 
 DEVICE = '/dev/ttyACM0'
 BAUDRATE = 4800
