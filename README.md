@@ -12,7 +12,7 @@ GPS tracking for GMRS nodes. Your node reads its position from a USB GPS receive
 
 You will need:
 
-* A GMRS node running **HamVoIP** or **AllStarLink 3 (ASL3)** that you can SSH into
+* A GMRS node running **HamVoIP** or **ASL3** that you can SSH into
 * A **VFAN USB GPS receiver** ([Amazon link](https://www.amazon.com/dp/B073P3Y48Q/))
 * The **username and password** from your GMRS Node Tracking registration e-mail
 
