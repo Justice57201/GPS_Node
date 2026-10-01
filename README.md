@@ -1,7 +1,8 @@
 ![Logo](https://gmrs-link.com/map/Node-tracking.png)
 
 ![Release Version](https://img.shields.io/badge/Version-v8.0.0-blue?color=blue)
-![OS Version](https://img.shields.io/badge/OS-Hamvoip_*_ASL3-red?color=red)
+![OS Version](https://img.shields.io/badge/OS-Linux_*_Hamvoip-red?color=red)
+![OS Version](https://img.shields.io/badge/OS-Linux_*_ASL3-purple?color=purple)
 
 # GMRS-Link Node Tracking
 
