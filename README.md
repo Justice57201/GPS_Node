@@ -69,6 +69,9 @@ Open the sender file:
 
 ```bash
 nano /root/GPS/gps_sender.py      # HamVoIP
+```
+
+```bash
 nano /opt/GPS/gps_sender.py       # ASL3
 ```
 
