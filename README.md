@@ -1,6 +1,6 @@
 ![Logo](https://gmrs-link.com/map/Node-tracking.png)
 
-![Release Version](https://img.shields.io/badge/Version-v12.0.0-blue?color=blue)
+![Release Version](https://img.shields.io/badge/Version-v12.1.0-blue?color=blue)
 ![Release Version](https://img.shields.io/badge/BETA_Testing-black?color=orange)
 ![OS Version](https://img.shields.io/badge/OS-Linux_*_Hamvoip-red?color=red)
 
@@ -66,16 +66,17 @@ nano /root/GPS/gps_sender.py
 Near the top is the **USER CONFIG** section. It looks like this. The values below are an example, so change them to match your node:
 
 ```python
-#------------------------------------------#
-#               USER CONFIG                #
-#------------------------------------------#
+#-----------------------------------------#
+#               USER CONFIG               #
+#-----------------------------------------#
 
 CALLSIGN = 'WRXX123'          # Your callsign only -- no dash or number
 SSID = 1                      # 1 = callsign alone (WRXX123)
-                              # 2-10 = extra units (WRXX123-2 ... WRXX123-10)
+                              # 2 and up = extra units (WRXX123-2, WRXX123-3 ...)
+                              # The server sets the highest SSID it accepts
 ICON = 'marker_blue'          # See pin list
 DEBUG = False                 # Debug output
-SEND_INTERVAL = 60            # Seconds
+SEND_INTERVAL = 60            # Seconds (the server sets the minimum, 30 by default)
 INCLUDE_SPEED = False         # True / False
 INCLUDE_TRAIL = False         # True / False
 
@@ -84,10 +85,11 @@ OVERRIDE_ALWAYS_RUN = False   # True = ignore flag file and always run
 # ---- Map extras (all optional) ---- #
 
 INCLUDE_HEADING = True        # Direction arrow on the map while moving
+                              # (the server decides how fast counts as moving)
 INCLUDE_GPS_INFO = True       # Altitude + satellite count in the popup
 NODE_TYPE = 'mobile'          # 'mobile', 'base', 'repeater', 'portable' or '' for none
 NETWORK = ''                  # Network name, e.g. 'T.G.L.N', 'G.F.N', 'N.E.G'
-                              # Max 20 characters -- '' for none
+                              # '' for none (the server sets the length limit)
 NODE_LINK = ''                # Status page URL, e.g. 'https://...' -- '' for none
 
 # ---- Credentials From Registration ---- #
@@ -95,7 +97,7 @@ NODE_LINK = ''                # Status page URL, e.g. 'https://...' -- '' for no
 AUTH_USER = "USER_NAME"       # Username
 AUTH_PASS = "PASSWORD"        # Password
 
-# ---------------------------------------- #
+# --------------------------------------- #
 ```
 
 > [!IMPORTANT]
@@ -110,7 +112,7 @@ AUTH_PASS = "PASSWORD"        # Password
 | `SSID` | Which unit this is. `1` shows your call sign alone (`WRXX123`). `2` to `10` are for extra units and show as `WRXX123-2` up to `WRXX123-10`. |
 | `ICON` | The pin shown on the map. Pick one from the [Map Icons](https://gmrs-link.com/map/icons/map_icons.pdf) list, e.g. `'marker_blue'` or `'pickup'`. |
 | `DEBUG` | `True` prints extra output for testing the connection. Use `False` for normal use. |
-| `SEND_INTERVAL` | How often your position is sent, in seconds. Use **60 to 600**. |
+| `SEND_INTERVAL` | How often your position is sent, in seconds. Use **60 to 600**. The server won't accept faster than every 30 seconds; if you set less, your node slows down to 30 on its own. |
 | `INCLUDE_SPEED` | `True` for mobile nodes, `False` for base stations. |
 | `INCLUDE_TRAIL` | `True` leaves a trail on the map showing where you've been. `False` for no trail. |
 | `OVERRIDE_ALWAYS_RUN` | `False` lets you turn tracking on and off from your radio (see [How to use](#how-to-use)). `True` ignores the on/off flag file and always runs. |
@@ -131,7 +133,7 @@ These add more detail to your pin on the map. Leave them as they are if you're n
 
 | Setting | What to put there |
 |---|---|
-| `AUTH_USER` | The **username** from your registration e-mail. |
+| `AUTH_USER` | The **username** from your registration e-mail. This is your call sign. |
 | `AUTH_PASS` | The **password** from your registration e-mail, typed exactly as shown. |
 
 > [!TIP]
@@ -180,12 +182,48 @@ Then open the tracking map listed in your registration e-mail and check that you
 
 ---
 
+## Viewing the logs
+
+If your pin isn't showing up, the log will usually tell you why.
+
+| What | Command |
+|---|---|
+| Watch the sender live | `journalctl -u gps_sender -f` |
+| Last 50 lines | `journalctl -u gps_sender -n 50` |
+| DTMF enable / disable | `journalctl -t GPS -f` |
+
+Press **Ctrl+C** to stop watching. For more detail, set `DEBUG = True` in `gps_sender.py`, restart the service, and watch the log again. Set it back to `False` when you're done.
+
+> [!NOTE]
+> HamVoIP clears the log every time the node reboots. To keep it, run:
+> ```bash
+> mkdir -p /var/log/journal && systemctl restart systemd-journald
+> ```
+
+### Common log messages
+
+| Message | What it means |
+|---|---|
+| `GPS Sender Ver 12.1 starting for WRXX123` | Started normally. The name at the end is how you'll show on the map. |
+| `GPS disabled (waiting for flag file)` | Tracking is off. Send `*A50` to turn it on. |
+| `GPS enabled` followed by nothing | No GPS fix yet. Normal for the first few minutes, or if the GPS can't see the sky. |
+| `Error opening serial port` | The GPS isn't on `/dev/ttyACM0`. Re-check Step 2 and the `DEVICE` line. |
+| `CONFIG ERROR in gps_sender.py` | A setting is wrong. The next part of the line says which one. |
+| `Server rejected authentication` | `AUTH_USER` or `AUTH_PASS` doesn't match your registration e-mail. |
+| `username must match the callsign` | Your login can only send for its own call sign. Check `CALLSIGN` and `AUTH_USER`. |
+| `not allowed -- use CALLSIGN alone or CALLSIGN-2 to CALLSIGN-10` | `SSID` is out of range. Use `1` to `10`. |
+| `Icon '...' not found on the server` | That icon name isn't on the map. Check the spelling against the Map Icons list. |
+| `Network name is ... characters` | `NETWORK` is too long. Keep it to 20 characters. |
+| `SEND_INTERVAL ... is below the server minimum` | Your interval is under 30 seconds. The node uses 30 on its own; nothing to fix. |
+
+---
+
 ## Troubleshooting
 
 | Problem | Try this |
 |---|---|
-| Not showing on the map | Set `DEBUG = True`, restart the service, and watch the output. Check that `AUTH_USER` and `AUTH_PASS` match your e-mail exactly. |
-| Script won't start after editing | Usually a missing quote mark or a lowercase `true` / `false`. Compare with the example above. |
+| Not showing on the map | Watch the log (see [Viewing the logs](#viewing-the-logs)) and check the message against the table above. Make sure `AUTH_USER` and `AUTH_PASS` match your e-mail exactly. |
+| Script won't start after editing | Usually a missing quote mark or a lowercase `true` / `false`. Compare with the example above. The log shows `CONFIG ERROR` if a setting is wrong. |
 | No `ttyACM` device in Step 2 | Unplug the GPS, wait a few seconds, and plug it back in. Try another USB port. |
 | No position or no fix | The GPS needs a view of the sky. Move it near a window or outside. The first fix can take several minutes. |
 | Default pin instead of your icon | Check the `ICON` spelling against the Map Icons list. |
@@ -200,11 +238,12 @@ Then open the tracking map listed in your registration e-mail and check that you
 /root/GPS/gps_uninstall.sh
 ```
 
-Enter your node number when asked.
+Type **y** and press **ENTER** when asked to confirm.
 
 ---
 
 ## Author
 
 * [WRQC343](https://www.gmrs-link.com)
+
 
