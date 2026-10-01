@@ -4,7 +4,7 @@
 ![OS Version](https://img.shields.io/badge/OS-Linux_*_Hamvoip-red?color=red)
 ![OS Version](https://img.shields.io/badge/OS-Linux_*_ASL3-purple?color=purple)
 
-# GMRS-Link GPS Node Tracking
+# GMRS-Link - GPS Node Tracking
 
 GPS tracking for GMRS nodes. Your node reads its position from a USB GPS receiver and sends it to the GMRS-Link live map.
 
