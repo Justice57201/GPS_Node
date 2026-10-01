@@ -1,7 +1,6 @@
 ![Logo](https://gmrs-link.com/map/Node-tracking.png)
 
 ![Release Version](https://img.shields.io/badge/Version-v8.0.0-blue?color=blue)
-![Release Version](https://img.shields.io/badge/BETA_Testing-black?color=orange)
 ![OS Version](https://img.shields.io/badge/OS-Hamvoip_*_ASL3-red?color=red)
 
 # GMRS-Link Node Tracking
@@ -187,7 +186,6 @@ Then open the tracking map listed in your registration e-mail and check that you
 > [!NOTE]
 > * Every time you reboot the node, you need to re-enable GPS tracking with `*A50`, unless `OVERRIDE_ALWAYS_RUN = True`.
 > * Any time you change `gps_sender.py`, run `systemctl restart gps_sender.service`.
-> * This is a beta and subject to change.
 
 ---
 
