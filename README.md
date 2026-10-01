@@ -83,8 +83,8 @@ Near the top is the **USER CONFIG** section. It looks like this. The values belo
 #-----------------------------------------#
 
 CALLSIGN = 'WRXX123'          # Your callsign only -- no dash or number
-SSID = 1                      # 1 = callsign alone (WRQC343)
-                              # 2 and up = extra units (WRQC343-2, WRQC343-3 ...)
+SSID = 1                      # 1 = callsign alone (WLMR400)
+                              # 2 and up = extra units (WLMR400-2, WLMR400-3 ...)
 ICON = 'pin_blue'             # See pin list
 DEBUG = False                 # Debug output
 SEND_INTERVAL = 60            # Seconds (the server sets the minimum, 30 by default)
