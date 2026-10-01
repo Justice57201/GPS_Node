@@ -1,6 +1,6 @@
 ![Logo](https://gmrs-link.com/map/Node-tracking.png)
 
-![Release Version](https://img.shields.io/badge/Version-v10.0.0-blue?color=blue)
+![Release Version](https://img.shields.io/badge/Version-v12.0.0-blue?color=blue)
 ![Release Version](https://img.shields.io/badge/BETA_Testing-black?color=orange)
 ![OS Version](https://img.shields.io/badge/OS-Linux_*_Hamvoip-red?color=red)
 
@@ -84,7 +84,6 @@ OVERRIDE_ALWAYS_RUN = False   # True = ignore flag file and always run
 # ---- Map extras (all optional) ---- #
 
 INCLUDE_HEADING = True        # Direction arrow on the map while moving
-HEADING_MIN_SPEED = 3         # mph -- no arrow below this (GPS heading is junk when parked)
 INCLUDE_GPS_INFO = True       # Altitude + satellite count in the popup
 NODE_TYPE = 'mobile'          # 'mobile', 'base', 'repeater', 'portable' or '' for none
 NETWORK = ''                  # Network name, e.g. 'T.G.L.N', 'G.F.N', 'N.E.G'
@@ -123,7 +122,6 @@ These add more detail to your pin on the map. Leave them as they are if you're n
 | Setting | What it does |
 |---|---|
 | `INCLUDE_HEADING` | `True` shows a direction arrow on your pin while you're moving. |
-| `HEADING_MIN_SPEED` | The arrow only shows above this speed, in mph. GPS direction is unreliable when parked, so `3` is a good start. |
 | `INCLUDE_GPS_INFO` | `True` adds altitude and satellite count to the popup when someone clicks your pin. |
 | `NODE_TYPE` | `'mobile'`, `'base'`, `'repeater'` or `'portable'`. Use `''` for none. |
 | `NETWORK` | The network your node is on, e.g. `'T.G.L.N'`, `'G.F.N'` or `'N.E.G'`. Up to 20 characters. Use `''` for none. |
