@@ -1,4 +1,4 @@
-![Logo](https://gmrs-link.com/map/Node-tracking.png)
+![Logo](https://gmrs-link.com/images/node_track/Node-tracking.png)
 
 ![Release Version](https://img.shields.io/badge/Version-v8.0.0-blue?color=blue)
 ![OS Version](https://img.shields.io/badge/OS-Linux_*_Hamvoip-red?color=red)
