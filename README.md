@@ -165,7 +165,7 @@ When you're done, save and close the file. In nano, press **Ctrl+O**, then **ENT
 
 ## Step 4: Restart the service
 
-```
+```bash
 systemctl restart gps_sender.service
 ```
 
