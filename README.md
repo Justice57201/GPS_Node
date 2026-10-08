@@ -1,4 +1,4 @@
-![Logo](https://gmrs-link.com/map/Node-tracking.png)
+![Logo](https://gmrs-link.com/images/node_track/Node-tracking.png)
 
 ![Release Version](https://img.shields.io/badge/Version-v8.0.2-blue?color=blue)
 ![Release Version](https://img.shields.io/badge/BETA_Testing-black?color=orange)
