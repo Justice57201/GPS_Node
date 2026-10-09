@@ -11,7 +11,7 @@
 from __future__ import print_function
 import serial, socket, time, json, os, re
 
-VERSION = "8.0.2"
+VERSION = "8.0.3"
 
 DEVICE = '/dev/ttyACM0'
 BAUDRATE = 4800
