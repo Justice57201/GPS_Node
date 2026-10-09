@@ -3,8 +3,8 @@
 #
 # By -- WRQC343 -- www.gmrs-link.com
 #
-# Ver 8.0.2 - 10/26
-#
+# Ver 8.0.3 - 10/26
+#123
 # GPS Node Tracking - Sender
 
 
