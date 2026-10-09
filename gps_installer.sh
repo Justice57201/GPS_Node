@@ -2,7 +2,7 @@
 #
 # By -- WRQC343 -- www.gmrs-link.com
 #
-# Ver 3.3 - 10/26
+# Ver 3.2 - 10/26
 #
 # GPS Node Tracking - Installer (HamVoIP + ASL3)
 #
