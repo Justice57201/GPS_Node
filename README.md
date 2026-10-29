@@ -247,7 +247,7 @@ Use your radio's DTMF keypad or Supermon:
 |---|---|
 | `*A50` | Enable GPS tracking |
 | `*A51` | Disable GPS tracking |
-| `*A52` | Update to the latest version (see [Updating](#updating)) |
+| `*A52` | Update to the latest version |
 
 Then open the tracking map listed in your registration e-mail and check that your pin shows up.
 
