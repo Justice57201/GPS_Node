@@ -29,10 +29,10 @@ SERVER_PORT = 5008
 CALLSIGN = 'YOUR_CALLSIGN'    # Your callsign only -- no dash or number
 SSID = 1                      # 1 = callsign alone (WRQC343)
                               # 2 and up = extra units (WRQC343-2, WRQC343-3 ...)
-ICON = 'pin_blue'             # See pin list
+ICON = 'default'              # See pin list
 DEBUG = False                 # Debug output
-INCLUDE_SPEED = False         # True / False
-INCLUDE_TRAIL = False         # True / False
+INCLUDE_SPEED = True          # True / False
+INCLUDE_TRAIL = True          # True / False
 
 OVERRIDE_ALWAYS_RUN = False   # True = ignore flag file and always run
 
